@@ -1,0 +1,19 @@
+# This is a comment.
+# var string $txt = "Hello";
+# $txt = $test;
+# input $txt;
+# print $txt;
+
+var string $txt1 = "Text 1";
+var string $txt2 = "Text 2";
+
+print $txt1;
+print "\n";
+
+print $txt2;
+print "\n";
+
+$txt1 = $txt2;
+$txt1 = "Test~"; # ERR
+print $txt2;
+print "\n";

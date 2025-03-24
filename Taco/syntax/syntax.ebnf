@@ -1,0 +1,66 @@
+(*
+	The Taco EBNF syntax file to show grammar of this language.
+	Created By Arya Fardmanesh
+*)
+
+(* baisc *)
+letter = upper_letter , lower_letter ;
+
+upper_letter =
+	"A" , "B" , "C" , "D" , "E" , "F" ,
+	"G" , "H" , "I" , "J" , "K" , "L" ,
+	"M" , "N" , "O" , "P" , "Q" , "R" ,
+	"S" , "T" , "U" , "V" , "W" , "X" ,
+	"Y" , "Z"
+;
+
+lower_letter =
+	"a" , "b" , "c" , "d" , "e" , "f" ,
+	"g" , "h" , "i" , "j" , "k" , "l" ,
+	"m" , "n" , "o" , "p" , "q" , "r" ,
+	"s" , "t" , "u" , "v" , "w" , "x" ,
+	"y" , "z"
+;
+
+digit = "0" , "1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" ;
+
+whitespace = " " ;
+tab = "\t" ;
+eof = "\0" ;
+newline = "\n" | "\r" ;
+
+parentheses = "(" | ")" ;
+
+symbol =
+	"!" , "\"" , "#" , "$" , "%" , "&" ,
+	"'" , "(" , ")" , "*" , "+" , "," ,
+	"-" , "." , "/" , ":" , ";" , "<" ,
+	"=" , ">" , "?" , "@" , "[" , "\\" ,
+	"]" , "^" , "_" , "`" , "{" , "|" ,
+	"}" , "~"
+;
+
+identifier = "$" , { letter , digit , "_" } ;
+
+escape_sequence_character = "\\" , { letter , digit , whitespace , tab , newline , symbol } ;
+str_var_call = "$" , identifier ;
+
+(* types *)
+literals = string_literal , bool_literal ;
+
+string_literal = "\"" , { letter , digit , whitespace , tab , newline , { symbol - "$" } , escape_sequence_character , str_var_call } , "\"" ;
+bool_literal = "true" | "false" ;
+
+data = literals | identifier ;
+
+types_keyword = "string" | "bool" ;
+
+(* statements *)
+statements = print_statement , input_statement , var_statement ;
+
+print_statement = "print" , data , ";" ;
+input_statement = "input" , identifier , ";" ;
+var_statement = "var" , types_keyword , identifier , [ "=" , data ] , ";" ;
+
+(* comments *)
+comment = "#" , { letter , digit , whitespace , tab , symbol } , { newline | eof } ;

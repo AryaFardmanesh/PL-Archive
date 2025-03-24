@@ -1,0 +1,9 @@
+KEYWORDS = [
+	true		;
+	false		;
+	string		;
+	bool		;
+	print		;
+	input		;
+	var		;
+]

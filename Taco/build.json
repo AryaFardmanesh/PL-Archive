@@ -1,0 +1,26 @@
+{
+	"entry": "./src/main.js",
+	"output": "./dist/",
+	"webpack": {
+		"mode": "production",
+		"resolve": {
+			"extensions": [ "...", ".node" ]
+		},
+		"target": "node",
+		"node": {
+			"__dirname": false
+		},
+		"module": {
+			"rules": [
+				{
+					"test": "/\\.node$/",
+					"loader": "node-loader"
+				}
+			]
+		}
+	},
+	"babel": {
+		"presets": [ "@babel/env" ]
+	},
+	"terser": {}
+}

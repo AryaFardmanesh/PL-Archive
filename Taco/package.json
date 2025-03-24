@@ -1,0 +1,46 @@
+{
+	"name": "taco",
+	"version": "1.0.0",
+	"description": "The Taco programming language interpreter implemented with Javascript.",
+	"main": "out/main.js",
+	"scripts": {
+		"build": "node ./build/build.js",
+		"test": "jest"
+	},
+	"jest": {
+		"transform": {
+			"^.+\\.jsx?$": "babel-jest"
+		},
+		"moduleFileExtensions": [
+			"js",
+			"jsx",
+			"json",
+			"node"
+		],
+		"testEnvironment": "node"
+	},
+	"keywords": [
+		"taco",
+		"taco-programming-language",
+		"interpreter",
+		"programming-language"
+	],
+	"author": {
+		"name": "Arya Fardmanesh",
+		"email": "AryaFardmanesh.1383@gmail.com",
+		"url": "https://github.com/AryaFardmanesh/"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "^7.25.8",
+		"@babel/preset-env": "^7.25.8",
+		"babel-jest": "^29.7.0",
+		"gulp": "^5.0.0",
+		"gulp-babel": "^8.0.0",
+		"gulp-clean": "^0.4.0",
+		"gulp-terser": "^2.1.0",
+		"jest": "^29.7.0",
+		"node-loader": "^2.0.0",
+		"webpack-stream": "^7.0.0"
+	}
+}
