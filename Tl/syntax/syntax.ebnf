@@ -1,0 +1,47 @@
+<program> ::= <statement> | <preprocessor_directive> | <comment> | <program> <statement> | <program> <preprocessor_directive> | <program> <comment>
+
+<preprocessor_directive> ::= "#include" <string_literal> | "#define" <identifier> <expression>
+
+<statement> ::= "print" <expression> ";"
+
+<expression> ::= <string_literal> | <number_literal> | <identifier>
+
+<string_literal> ::= <double_quoted_string> | <single_quoted_string>
+
+<double_quoted_string> ::= "\"" <string_characters> "\""
+<single_quoted_string> ::= "'" <string_characters> "'"
+
+<string_characters> ::= <string_character> | <string_character> <string_characters>
+<string_character> ::= <normal_character> | <escape_sequence>
+
+<escape_sequence> ::= "\\" ( "n" | "t" | "\"" | "'" | "\\" )
+
+<number_literal> ::= <integer_literal> | <float_literal>
+<integer_literal> ::= <integer>
+<float_literal> ::= <float>
+
+<integer> ::= <integer_without_sign> | "+" <integer_without_sign> | "-" <integer_without_sign>
+<integer_without_sign> ::= <digit> | <digit> <integer>
+
+<float> ::= <integer> "." <integer> | "+" <integer> "." <integer> | "-" <integer> " . " <integer>
+
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<normal_character> ::= <any_character_except_quotes_or_backslash>
+
+<any_character_except_quotes_or_backslash> ::= <any_character_except_double_quote> | <any_character_except_single_quote> | <any_character_except_backslash>
+<any_character_except_double_quote> ::= <any_character_except_double_quote_and_backslash> | "\\" <escape_sequence>
+<any_character_except_single_quote> ::= <any_character_except_single_quote_and_backslash> | "\\" <escape_sequence>
+<any_character_except_backslash> ::= <any_character_except_backslash_and_quotes> | "\\" <escape_sequence>
+<any_character_except_double_quote_and_backslash> ::= <any_character>
+<any_character_except_single_quote_and_backslash> ::= <any_character>
+<any_character_except_backslash_and_quotes> ::= <any_character>
+<escape_sequence> ::= "\\" ( "n" | "t" | "\"" | "'" | "\\" )
+
+<identifier> ::= "$" <alpha> { <alpha> | <digit> | "_" }
+
+<comment> ::= <single_line_comment> | <multi_line_comment>
+
+<single_line_comment> ::= "//" <comment_characters>
+<comment_characters> ::= <any_character> { <any_character> }
+<multi_line_comment> ::= "/*" <multi_line_comment_content> "*/"
+<multi_line_comment_content> ::= <any_character> { <any_character> }

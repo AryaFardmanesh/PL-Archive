@@ -1,0 +1,5 @@
+#define $__LANG_NAME__ "Tl"
+#define $__LANG__TYPE__ "Tl-Core"
+#define $__VERSION__ "1.0.0"
+#define $__CREATETOR_NAME__ "Arya Fardmanesh"
+#define $__TL_GIT_HUB__ "<NONE>"
